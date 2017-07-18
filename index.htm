@@ -27,7 +27,7 @@
                     </conditions>
                     <action type="None" />
                 </rule>
-                <rule name="DirectBrowse" stopProcessing="true">
+                <rule name="DirectBrowse" enabled="true" stopProcessing="true">
                     <match url="^$" />
                     <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
                         <add input="{HTTP_directbrowse}" pattern="1" negate="true" />
