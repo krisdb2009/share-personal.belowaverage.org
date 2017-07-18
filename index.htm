@@ -9,6 +9,8 @@
                 <fileExtensions>
                     <add fileExtension=".lnk" allowed="false" />
                 </fileExtensions>
+                <hiddenSegments>
+                </hiddenSegments>
             </requestFiltering>
         </security>
         <staticContent>
@@ -17,14 +19,21 @@
         <defaultDocument enabled="false" />
         <rewrite>
             <rules>
-                <rule name="DirectBrowse">
+                <clear />
+                <rule name="DontTouchDav" enabled="true" stopProcessing="true">
+                    <match url=".*" />
+                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
+                        <add input="{DAV}" pattern="^$" negate="true" />
+                    </conditions>
+                    <action type="None" />
+                </rule>
+                <rule name="DirectBrowse" stopProcessing="true">
                     <match url="^$" />
-                    <conditions>
+                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
                         <add input="{HTTP_directbrowse}" pattern="1" negate="true" />
-                        <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
                         <add input="{REQUEST_URI}" pattern="^/" />
                     </conditions>
-                    <action type="Rewrite" url="/DirectBrowse/" />
+                    <action type="Rewrite" url="/Documents/belowaverage/share.belowaverage.org/index.htm" appendQueryString="false" />
                 </rule>
             </rules>
         </rewrite>
