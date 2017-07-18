@@ -1,7 +1,39 @@
 <!doctype html>
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <directoryBrowse enabled="true" showFlags="Extension" />
+        <security>
+            <requestFiltering>
+                <fileExtensions>
+                    <add fileExtension=".lnk" allowed="false" />
+                </fileExtensions>
+            </requestFiltering>
+        </security>
+        <staticContent>
+            <mimeMap fileExtension=".*" mimeType="application/octet-stream" />
+        </staticContent>
+        <defaultDocument enabled="false" />
+        <rewrite>
+            <rules>
+                <rule name="DirectBrowse">
+                    <match url="^$" />
+                    <conditions>
+                        <add input="{HTTP_directbrowse}" pattern="1" negate="true" />
+                        <add input="{REQUEST_FILENAME}" matchType="IsFile" negate="true" />
+                        <add input="{REQUEST_URI}" pattern="^/" />
+                    </conditions>
+                    <action type="Rewrite" url="/DirectBrowse/" />
+                </rule>
+            </rules>
+        </rewrite>
+    </system.webServer>
+</configuration>
+-->
 <html>
 	<head>
-		<title>BA</title>
+		<title>BA Share Drive</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<script>
 		/*! jQuery v3.2.1 | (c) JS Foundation and other contributors | jquery.org/license */
