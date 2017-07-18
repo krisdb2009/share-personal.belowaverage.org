@@ -22,21 +22,27 @@
 		function loadDir(dir) {
 			$('#links').html('');
 			$('#dir').text(dir);
-			$.get(dir, function(data) {
-				$.each($(data).find('a'), function() {
-					var href = '';
-					var clas = '';
-					var exti = '';
-					if($(this).attr('href').slice(-1) == '/') {
-						href = '#'+$(this).attr('href');
-						clas = 'dir';
-					} else {
-						href = $(this).attr('href');
-						clas = 'doc';
-						exti = $(this).text().split('.').pop().toLowerCase();
-					}
-					$('<a exti="'+exti+'" class="'+clas+'" href="'+href+'">'+$(this).text()+'</a>').appendTo('#links');
-				});
+			$.ajax({
+				url: dir,
+				headers: {
+					'directbrowse':'1'
+				},
+				success: function(data) {
+					$.each($(data).find('a'), function() {
+						var href = '';
+						var clas = '';
+						var exti = '';
+						if($(this).attr('href').slice(-1) == '/') {
+							href = '#'+$(this).attr('href');
+							clas = 'dir';
+						} else {
+							href = $(this).attr('href');
+							clas = 'doc';
+							exti = $(this).text().split('.').pop().toLowerCase();
+						}
+						$('<a exti="'+exti+'" class="'+clas+'" href="'+href+'">'+$(this).text()+'</a>').appendTo('#links');
+					});
+				}
 			});
 		}
 		
