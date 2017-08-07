@@ -1,45 +1,4 @@
 <!doctype html>
-<!--
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <directoryBrowse enabled="true" showFlags="Extension" />
-        <security>
-            <requestFiltering>
-                <fileExtensions>
-                    <add fileExtension=".lnk" allowed="false" />
-                </fileExtensions>
-                <hiddenSegments>
-                </hiddenSegments>
-            </requestFiltering>
-        </security>
-        <staticContent>
-            <mimeMap fileExtension=".*" mimeType="application/octet-stream" />
-        </staticContent>
-        <defaultDocument enabled="false" />
-        <rewrite>
-            <rules>
-                <clear />
-                <rule name="DontTouchDav" enabled="true" stopProcessing="true">
-                    <match url=".*" />
-                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
-                        <add input="{DAV}" pattern="^$" negate="true" />
-                    </conditions>
-                    <action type="None" />
-                </rule>
-                <rule name="DirectBrowse" enabled="true" stopProcessing="true">
-                    <match url="^$" />
-                    <conditions logicalGrouping="MatchAll" trackAllCaptures="false">
-                        <add input="{HTTP_directbrowse}" pattern="1" negate="true" />
-                        <add input="{REQUEST_URI}" pattern="^/" />
-                    </conditions>
-                    <action type="Rewrite" url="/Documents/belowaverage/share.belowaverage.org/index.htm" appendQueryString="false" />
-                </rule>
-            </rules>
-        </rewrite>
-    </system.webServer>
-</configuration>
--->
 <html>
 	<head>
 		<title>BA Share Drive</title>
@@ -55,7 +14,7 @@
 				dir = dir.slice(1);
 			}
 			if(dir == '') {
-				dir = '/';
+				dir = './';
 			}
 			loadDir(dir);
 		}
